@@ -1356,8 +1356,8 @@ Then you turn back…`,
     text:"You go to work. You try not to think about the nightmare.",
     bg:"assets/bg/work_office.png",
     media: (s.profile.job === "Digipay QA")
-      ? `<img alt="meme" src="assets/ui/meme_awshit.svg">`
-      : `<img alt="meme" src="assets/ui/meme_happyjob.svg">`,
+      ? `<img alt="meme" src="https://images.steamusercontent.com/ugc/784109274573364001/D6C22DE592194B58FB62E2770842D556649ABAE5/?imw=268&imh=268&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true">`
+      : `<img alt="meme" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKVV9mYro174YdMuORLN3PSzXLWT8e4m9OQ&s">`,
     choices:[
       { label:"Finish", sub:"", effect:(st)=>{ st.flags.finished = true; }, next:"finale" }
     ]
