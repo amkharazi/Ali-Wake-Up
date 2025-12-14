@@ -1375,7 +1375,7 @@ And from the part of you that still remains in the abyss…
 
 `,
     bg:"assets/bg/finale_birthday.png",
-    media:`<img alt="Happy Birthday" src="assets/ui/happy.svg">`,
+    media:`<img alt="Happy Birthday" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtYGi02Bk1rcP09mSM9z833CEgSQJLyo-Tlg&s">`,
     onEnter: async (st) => {
       if(!st.flags.finished){
         st.flags.finished = true;
