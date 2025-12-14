@@ -10,6 +10,7 @@ This project was made as a **birthday gift** for Ali Shahrokhi.
 # Play
 
 You can play the game via this link <a href="https://amkharazi.github.io/Ali-Wake-Up/"> Link </a>
+
 ---
 
 ## Story
