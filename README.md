@@ -6,6 +6,10 @@ This project was made as a **birthday gift** for Ali Shahrokhi.
 
 > Built with the help of ChatGPT — and yes… it made me cry multiple times while trying to make it 😅  
 
+
+# Play
+
+You can play the game via this link <a href="https://amkharazi.github.io/Ali-Wake-Up/"> Link </a>
 ---
 
 ## Story
