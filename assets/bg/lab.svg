@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(260 55% 12%)"/>
+      <stop offset="55%" stop-color="hsl(200 45% 10%)"/>
+      <stop offset="100%" stop-color="hsl(240 40% 8%)"/>
+    </linearGradient>
+    
+    <radialGradient id="v" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="70%" stop-color="rgba(0,0,0,.15)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,.55)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <g opacity=".18">
+    <path d="M-30,700 C200,520 300,520 520,700 C760,900 980,880 1200,710 C1360,580 1480,600 1660,730"
+      fill="none" stroke="rgba(255,255,255,.25)" stroke-width="10"/>
+    <path d="M-50,500 C250,310 380,340 600,520 C860,740 1040,710 1260,520 C1420,390 1520,400 1700,540"
+      fill="none" stroke="rgba(255,255,255,.18)" stroke-width="8"/>
+  </g>
+  <g opacity=".25">
+    <circle cx="210" cy="180" r="3" fill="rgba(255,255,255,.55)"/>
+    <circle cx="990" cy="240" r="2" fill="rgba(255,255,255,.55)"/>
+    <circle cx="1310" cy="160" r="2" fill="rgba(255,255,255,.55)"/>
+    <circle cx="460" cy="300" r="2" fill="rgba(255,255,255,.55)"/>
+  </g>
+  <rect width="1600" height="900" fill="url(#v)"/>
+  <text x="42" y="858" font-family="system-ui,Segoe UI,Roboto,Arial" font-size="22" fill="rgba(255,255,255,.20)">LAB</text>
+</svg>

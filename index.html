@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Ali, Wake Up</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand__title" id="brandTitle">Ali, Wake Up</div>
+        <div class="brand__subtitle">A short horror HTML game.</div>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="iconbtn" id="btnSettings" title="Settings" aria-label="Settings">⚙️</button>
+        <button class="iconbtn" id="btnDiary" title="Diary" aria-label="Diary">📓</button>
+        <button class="iconbtn" id="btnTerminal" title="Terminal" aria-label="Terminal">⌨️</button>
+        <button class="iconbtn" id="btnBug" title="Found a Bug?" aria-label="Found a Bug?">🐞</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hud">
+        <div class="hud__title">Needs</div>
+        <div class="needs" id="needs"></div>
+      </section>
+
+      <section class="panel">
+        <div class="scene">
+          <div class="scene__title" id="sceneTitle">…</div>
+          <div class="scene__meta" id="sceneMeta"></div>
+          <div class="scene__text" id="sceneText"></div>
+          <div class="scene__media" id="sceneMedia"></div>
+        </div>
+
+        <div class="choices" id="choices"></div>
+
+        <div class="toast" id="toast" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <!-- First-time setup -->
+    <div class="modalback" id="setupModal" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+      <div class="modal">
+        <div class="modal__head">
+          <div class="modal__title" id="setupTitle">Before you wake up…</div>
+          <div class="modal__sub">Saved in your browser (localStorage + a small cookie).</div>
+        </div>
+
+        <div class="form">
+          <label>
+            Your name
+            <input id="inpName" type="text" />
+          </label>
+
+          <label>
+            Your age
+            <input id="inpAge" type="number" min="1" max="120" />
+          </label>
+
+          <div class="row">
+            <label>
+              Villain
+              <select id="selVillain"></select>
+            </label>
+
+            <label>
+              Buddy
+              <select id="selBuddy"></select>
+            </label>
+          </div>
+
+          <label>
+            Job
+            <select id="selJob">
+              <option value="SnapPay QA">SnapPay QA</option>
+              <option value="Digipay QA">Digipay QA</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <div class="form__hint">Saved in your browser (localStorage + a small cookie).</div>
+        </div>
+
+        <div class="modal__actions">
+          <button class="btn" id="btnStart">Start</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="modalback" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
+      <div class="modal">
+        <div class="modal__head">
+          <div class="modal__title" id="settingsTitle">Settings</div>
+          <div class="modal__sub">Ambient plays continuously (no overlap with SFX).</div>
+        </div>
+
+        <div class="form">
+          <div class="settingsGrid">
+
+            <div class="settingRow">
+              <div class="settingRow__top">
+                <div class="settingRow__label">
+                  Ambient
+                  <div class="settingRow__desc">Play the horror ambience continuously.</div>
+                </div>
+                <label class="switch" id="swMusic">
+                  <input type="checkbox" id="chkMusic" />
+                  <span class="knob"></span>
+                </label>
+              </div>
+              <label>
+                Volume
+                <input type="range" id="rngMusic" min="0" max="1" step="0.01" />
+              </label>
+            </div>
+
+            <div class="settingRow">
+              <div class="settingRow__top">
+                <div class="settingRow__label">
+                  SFX
+                  <div class="settingRow__desc">Button and action sounds (no overlap).</div>
+                </div>
+                <label class="switch" id="swSfx">
+                  <input type="checkbox" id="chkSfx" />
+                  <span class="knob"></span>
+                </label>
+              </div>
+              <label>
+                Volume
+                <input type="range" id="rngSfx" min="0" max="1" step="0.01" />
+              </label>
+            </div>
+
+            <div class="row">
+              <button class="btn ghost danger" id="btnReset">Reset game</button>
+              <button class="btn ghost" id="btnCloseSettings">Close</button>
+            </div>
+
+            <div class="form__hint small">
+              Note: Some browsers may block Wikimedia audio (CORS).
+            </div>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diary -->
+    <div class="modalback" id="diaryModal" role="dialog" aria-modal="true" aria-labelledby="diaryTitle" hidden>
+      <div class="modal">
+        <div class="modal__head">
+          <div class="modal__title" id="diaryTitle">Diary</div>
+          <div class="modal__sub">Clues, thoughts, and mistakes.</div>
+        </div>
+
+        <div class="diary" id="diary"></div>
+
+        <div class="modal__actions">
+          <button class="btn ghost" id="btnCloseDiary">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminal -->
+    <div class="modalback" id="terminalModal" role="dialog" aria-modal="true" aria-labelledby="terminalTitle" hidden>
+      <div class="modal">
+        <div class="modal__head">
+          <div class="modal__title" id="terminalTitle">Terminal</div>
+          <div class="modal__sub">Type <code>help</code>. Cheat: <code>cheat happy birthday</code>.</div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal__log" id="termLog"></div>
+          <div class="terminal__input">
+            <span class="prompt">&gt;</span>
+            <input id="termInp" type="text" autocomplete="off" spellcheck="false" />
+          </div>
+        </div>
+
+        <div class="modal__actions">
+          <button class="btn ghost" id="btnCloseTerminal">Close</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Bug report -->
+    <div class="modalback" id="bugModal" role="dialog" aria-modal="true" aria-labelledby="bugTitle" hidden>
+      <div class="modal">
+        <div class="modal__head">
+          <div class="modal__title" id="bugTitle">Found a Bug?</div>
+          <div class="modal__sub">Thanks — this helps improve the game.</div>
+        </div>
+
+        <div class="diary">Thank you! 🙏
+
+You can report bugs as an issue on the project GitHub repository.</div>
+
+        <div class="modal__actions">
+          <button class="btn ghost" id="btnCloseBug">Close</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <script defer src="game.js"></script>
+</body>
+</html>
